@@ -13,7 +13,7 @@ public class CookieUtil {
         cookie.setHttpOnly(true);
         cookie.setMaxAge(maxAge);
         cookie.setSecure(true);
-        cookie.setDomain("veterinaria-theta.vercel.app/auth/login");
+        cookie.setDomain("");
         cookie.setPath("/");
         response.addCookie(cookie);
     }
@@ -24,7 +24,7 @@ public class CookieUtil {
         cookie.setHttpOnly(true);
         cookie.setSecure(false);
         cookie.setMaxAge(0);
-        cookie.setDomain("veterinaria-theta.vercel.app/auth/login");
+        cookie.setDomain("");
         response.addCookie(cookie);
     }
 }
