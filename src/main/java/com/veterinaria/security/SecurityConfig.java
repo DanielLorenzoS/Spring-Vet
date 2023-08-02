@@ -52,7 +52,7 @@ public class SecurityConfig {
                 .cors(config -> config.configurationSource(request -> {
                     CorsConfiguration corsConfiguration = new CorsConfiguration();
                     corsConfiguration.setAllowedOrigins(List.of("http://localhost:4200", "https://veterinaria-theta.vercel.app/"));
-                    corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+                    corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     corsConfiguration.setAllowCredentials(true);
                     corsConfiguration.addExposedHeader("Message");
                     corsConfiguration.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
