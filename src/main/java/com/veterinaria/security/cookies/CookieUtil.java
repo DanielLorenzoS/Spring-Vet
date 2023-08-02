@@ -12,7 +12,7 @@ public class CookieUtil {
         cookie.setSecure(secure);
         cookie.setHttpOnly(true);
         cookie.setMaxAge(maxAge);
-        cookie.setDomain(domain);
+        cookie.setDomain(".vercel.app");
         cookie.setPath("/");
         response.addCookie(cookie);
     }
@@ -22,7 +22,7 @@ public class CookieUtil {
         cookie.setPath("/");
         cookie.setHttpOnly(true);
         cookie.setMaxAge(0);
-        cookie.setDomain("vercel.app");
+        cookie.setDomain(".vercel.app");
         response.addCookie(cookie);
     }
 }
