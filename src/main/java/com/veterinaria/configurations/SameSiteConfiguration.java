@@ -9,6 +9,6 @@ public class SameSiteConfiguration {
 
     @Bean
     public CookieSameSiteSupplier cookieSameSiteSupplier() {
-        return CookieSameSiteSupplier.ofStrict();
+        return CookieSameSiteSupplier.ofNone();
     }
 }
