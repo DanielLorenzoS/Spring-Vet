@@ -12,7 +12,7 @@ public class CookieUtil {
         cookie.setSecure(secure);
         cookie.setHttpOnly(true);
         cookie.setMaxAge(maxAge);
-        cookie.setDomain("veterinaria-theta.vercel.app");
+        cookie.setDomain(".up.railway.app");
         cookie.setPath("/");
         response.addCookie(cookie);
     }
@@ -22,7 +22,7 @@ public class CookieUtil {
         cookie.setPath("/");
         cookie.setHttpOnly(true);
         cookie.setMaxAge(0);
-        cookie.setDomain("veterinaria-theta.vercel.app");
+        cookie.setDomain(".up.railway.app");
         response.addCookie(cookie);
     }
 }
