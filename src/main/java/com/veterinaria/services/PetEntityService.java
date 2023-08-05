@@ -14,6 +14,8 @@ public interface PetEntityService {
 
     List<PetEntity> getPetsByUser(Long id);
 
+    PetEntity getPetById(Long id);
+
     PetEntity updatePet(PetEntity petEntity);
 
     PetEntity deletePet(Long id);

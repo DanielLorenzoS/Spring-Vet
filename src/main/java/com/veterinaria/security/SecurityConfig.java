@@ -54,7 +54,6 @@ public class SecurityConfig {
                     corsConfiguration.setAllowedOrigins(List.of("http://localhost:4200", "https://veterinaria-theta.vercel.app/"));
                     corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     corsConfiguration.setAllowCredentials(true);
-                    corsConfiguration.addExposedHeader("Message");
                     corsConfiguration.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
                     return corsConfiguration;
                 }))

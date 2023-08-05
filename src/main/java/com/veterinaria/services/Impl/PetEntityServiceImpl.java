@@ -44,6 +44,10 @@ public class PetEntityServiceImpl implements PetEntityService {
         return petRepository.findByUserId(id);
     }
 
+    public PetEntity getPetById(Long id) {
+        return petRepository.findById(id).orElse(null);
+    }
+
     public PetEntity deletePet(Long id) {
         PetEntity petEntity = petRepository.findById(id).orElse(null);
         if (petEntity != null) {

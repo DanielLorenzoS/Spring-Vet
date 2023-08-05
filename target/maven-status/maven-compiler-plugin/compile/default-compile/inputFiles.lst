@@ -15,6 +15,7 @@
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/services/Impl/UserDetailsServiceImpl.java
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/controllers/IndexController.java
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/services/Impl/UserEntityServiceImpl.java
+/home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/configurations/CloudinaryConfig.java
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/services/UserEntityService.java
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/services/Impl/EmailServiceImpl.java
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/controllers/request/CreateUserDTO.java
@@ -32,7 +33,6 @@
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/repositories/EmailCodeDTORepository.java
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/security/jwt/TokenResponse.java
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/security/filters/JwtAuthenticationFilter.java
-/home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/security/cookies/CookieUtil.java
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/controllers/request/ResponseDTO.java
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/entities/PetEntity.java
 /home/dani/Documents/Spring-Vet/src/main/java/com/veterinaria/repositories/RoleRepository.java

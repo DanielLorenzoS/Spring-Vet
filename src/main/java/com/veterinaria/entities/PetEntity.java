@@ -1,6 +1,8 @@
 package com.veterinaria.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -11,6 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -30,7 +33,7 @@ public class PetEntity {
     private String sex;
 
     @NotNull @Past
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date birthdate;
 
     @NotBlank
@@ -42,7 +45,12 @@ public class PetEntity {
     @NotNull
     private float weight;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JsonBackReference
     @JoinColumn(name = "user_id")
     private UserEntity user;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pet", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<MedicalHistoryEntity> medicalHistories;
 }

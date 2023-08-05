@@ -6,7 +6,6 @@ import com.veterinaria.entities.RoleEntity;
 import com.veterinaria.entities.TokenEntity;
 import com.veterinaria.entities.UserEntity;
 import com.veterinaria.repositories.UserRepository;
-import com.veterinaria.security.cookies.CookieUtil;
 import com.veterinaria.security.jwt.JwtUtils;
 import com.veterinaria.security.jwt.TokenResponse;
 import com.veterinaria.services.EmailService;
@@ -16,7 +15,6 @@ import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -58,9 +56,6 @@ public class IndexController {
 
     @Autowired
     EmailService emailService;
-
-    @Value("${jwt.accessCookieName}")
-    private String accessCookieName;
 
     @GetMapping("/index")
     public UserEntity index() {
@@ -127,20 +122,21 @@ public class IndexController {
     }
 
     @PostMapping("/auth/login")
-    public ResponseEntity<ResponseDTO> login(HttpServletResponse response,
-                                             @Valid @RequestBody LoginUserDTO loginUserDTO, BindingResult bindingResult) throws Exception {
+    public TokenResponse login(@Valid @RequestBody LoginUserDTO loginUserDTO, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
-            return ResponseEntity.badRequest().body(new ResponseDTO("Error en la solicitud", bindingResult.getAllErrors()));
+            return new TokenResponse();
         }
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginUserDTO.getUsername(), loginUserDTO.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            System.out.println(authentication.getName());
             String jwt = jwtUtils.generateAccessToken(authentication.getName());
-            CookieUtil.create(response, accessCookieName, jwt, false, -1, "localhost");
-            return ResponseEntity.ok(new ResponseDTO("Login exitoso", null));
+            TokenResponse tokenResponse = new TokenResponse();
+            tokenResponse.setToken(jwt);
+            return tokenResponse;
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new ResponseDTO("Error en el inicio de sesión", e.getMessage()));
+            return new TokenResponse();
         }
     }
 
@@ -157,7 +153,7 @@ public class IndexController {
 
     @PostMapping("/logot")
     public ResponseEntity<ResponseDTO> logout(HttpServletResponse response) {
-        CookieUtil.clear(response, accessCookieName);
+        SecurityContextHolder.clearContext();
         return ResponseEntity.ok(new ResponseDTO("Logout exitoso", null));
     }
 
