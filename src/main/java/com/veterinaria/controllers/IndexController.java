@@ -77,7 +77,7 @@ public class IndexController {
         UserEntity userEntity = UserEntity.builder()
                 .email(createUserDTO.getEmail())
                 .phone(createUserDTO.getPhone())
-                .direction(createUserDTO.getDirection())
+                .address(createUserDTO.getDirection())
                 .username(createUserDTO.getUsername())
                 .password(passwordEncoder.encode(createUserDTO.getPassword()))
                 .roles(roles)

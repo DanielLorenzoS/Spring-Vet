@@ -30,7 +30,7 @@ public class UserEntity {
     @NotBlank @Size(max = 20) @Column(unique = true)
     private String phone;
 
-    private String direction;
+    private String address;
 
     @NotBlank @Size(max = 40) @Column(unique = true)
     private String username;
@@ -44,7 +44,7 @@ public class UserEntity {
             inverseJoinColumns =  @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<RoleEntity> roles;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = PetEntity.class)
+    @JsonManagedReference
     private Set<PetEntity> pets;
 }

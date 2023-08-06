@@ -47,7 +47,7 @@ public class UserEntityController {
         userEntity.get().setUsername(updateUserDTO.getUsername());
         userEntity.get().setEmail(updateUserDTO.getEmail());
         userEntity.get().setPhone(updateUserDTO.getPhone());
-        userEntity.get().setDirection(updateUserDTO.getAddress());
+        userEntity.get().setAddress(updateUserDTO.getAddress());
         return userEntityService.updateUser(userEntity);
     }
 
