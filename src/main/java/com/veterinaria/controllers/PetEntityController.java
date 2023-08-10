@@ -1,10 +1,15 @@
 package com.veterinaria.controllers;
 
+import com.veterinaria.controllers.request.PetDTO;
 import com.veterinaria.entities.PetEntity;
+import com.veterinaria.entities.UserEntity;
+import com.veterinaria.repositories.PetRepository;
+import com.veterinaria.repositories.UserRepository;
 import com.veterinaria.services.PetEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -14,6 +19,12 @@ public class PetEntityController {
 
     @Autowired
     PetEntityService petEntityService;
+
+    @Autowired
+    PetRepository petRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @PostMapping("/")
     public PetEntity savePet(@RequestBody PetEntity petEntity) {
@@ -64,4 +75,23 @@ public class PetEntityController {
         return petEntityService.deletePet(id);
     }
 
+    @GetMapping("/users")
+    public List<PetDTO> getUserWithPets() {
+        List<UserEntity> users = userRepository.findAll();
+        List<PetDTO> pets = new ArrayList<>();
+        users.forEach(user -> {
+            PetDTO tempPet = new PetDTO();
+            List<PetEntity> tempListPet = petRepository.findByUserId(user.getId());
+            tempListPet.forEach(temp -> {
+                tempPet.setId(temp.getId());
+                tempPet.setName(temp.getName());
+                tempPet.setRace(temp.getRace());
+                tempPet.setSpecie(temp.getSpecie());
+                tempPet.setUserId(user.getId());
+                tempPet.setUserUsername(user.getUsername());
+                pets.add(tempPet);
+            });
+        });
+        return pets;
+    }
 }

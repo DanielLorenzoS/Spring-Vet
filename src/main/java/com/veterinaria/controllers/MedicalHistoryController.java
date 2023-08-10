@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/medical")
 public class MedicalHistoryController {
-
+/*
     @Autowired
     private MedicalHistoryService medicalHistoryService;
 
@@ -28,5 +28,5 @@ public class MedicalHistoryController {
     @GetMapping("/")
     public List<MedicalHistoryEntity> getMedicalHistory() {
         return medicalHistoryService.getAll();
-    }
+    }*/
 }

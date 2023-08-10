@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MedicalHistoryRepository extends JpaRepository<MedicalHistoryEntity, Long> {
-    MedicalHistoryEntity findByPetId(Long pet_id);
+    /*MedicalHistoryEntity findByPetId(Long pet_id);*/
 }

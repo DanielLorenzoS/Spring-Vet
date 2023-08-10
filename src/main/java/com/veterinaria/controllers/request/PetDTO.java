@@ -28,5 +28,11 @@ public class PetDTO {
     private String race;
 
     private float weight;
+
+    private Long userId;
+
+    private String userUsername;
+
+
     
 }

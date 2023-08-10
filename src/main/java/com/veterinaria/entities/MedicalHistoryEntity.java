@@ -32,14 +32,14 @@ public class MedicalHistoryEntity {
 
     private String status;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "medicalHistory", cascade = CascadeType.ALL)
+    /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "medicalHistory", cascade = CascadeType.ALL)
     @JsonManagedReference
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    private List<PrescriptionEntity> prescriptions;
+    private List<PrescriptionEntity> prescriptions;*/
 
-    @JsonBackReference
+    /*@JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "pet_id")
-    private PetEntity pet;
+    private PetEntity pet;*/
 
 }

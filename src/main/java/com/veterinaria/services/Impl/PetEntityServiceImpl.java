@@ -1,8 +1,12 @@
 package com.veterinaria.services.Impl;
 
 import com.veterinaria.entities.PetEntity;
+import com.veterinaria.entities.UserEntity;
 import com.veterinaria.repositories.PetRepository;
+import com.veterinaria.repositories.UserRepository;
 import com.veterinaria.services.PetEntityService;
+import com.veterinaria.services.UserEntityService;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +17,9 @@ public class PetEntityServiceImpl implements PetEntityService {
 
     @Autowired
     PetRepository petRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     public PetEntity savePet(PetEntity petEntity) {
         return petRepository.save(petEntity);

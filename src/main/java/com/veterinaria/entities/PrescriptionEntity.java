@@ -38,8 +38,8 @@ public class PrescriptionEntity {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference
-    @JoinColumn(name = "medical_history_id")
+    @JoinColumn(name = "pet_id")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    private MedicalHistoryEntity medicalHistory;
+    private PetEntity pet;
 
 }

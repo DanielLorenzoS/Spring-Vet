@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class MedicalHistoryServiceImpl implements MedicalHistoryService {
-
+/*
     @Autowired
     private MedicalHistoryRepository repository;
 
@@ -33,7 +33,7 @@ public class MedicalHistoryServiceImpl implements MedicalHistoryService {
 
     public MedicalHistoryEntity getByPetId(int id){
         return repository.findByPetId((long) id);
-    }
+    }*/
 
 
 }

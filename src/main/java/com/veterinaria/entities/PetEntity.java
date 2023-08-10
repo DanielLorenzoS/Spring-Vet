@@ -45,12 +45,12 @@ public class PetEntity {
     @NotNull
     private float weight;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JsonBackReference
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pet", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<MedicalHistoryEntity> medicalHistories;
+    private List<PrescriptionEntity> prescriptions;
 }

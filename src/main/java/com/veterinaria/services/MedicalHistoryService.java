@@ -5,7 +5,7 @@ import com.veterinaria.entities.MedicalHistoryEntity;
 import java.util.List;
 
 public interface MedicalHistoryService {
-
+/*
     MedicalHistoryEntity save(MedicalHistoryEntity medicalHistoryEntity);
 
     MedicalHistoryEntity getById(int id);
@@ -14,5 +14,5 @@ public interface MedicalHistoryService {
 
     boolean deleteById(int id);
 
-    MedicalHistoryEntity getByPetId(int id);
+    MedicalHistoryEntity getByPetId(int id);*/
 }
