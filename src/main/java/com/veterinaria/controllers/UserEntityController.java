@@ -73,4 +73,9 @@ public class UserEntityController {
     public ResponseEntity<?> getUserByEmail(String email) {
         return userEntityService.getUserByEmail(email);
     }
+
+    @GetMapping("/user/pet/{id}")
+    public UserEntity getUserByPetId(@PathVariable int id) {
+        return userEntityService.getUserByPetId((long) id);
+    }
 }

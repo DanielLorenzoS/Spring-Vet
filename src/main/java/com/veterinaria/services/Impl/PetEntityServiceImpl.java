@@ -41,7 +41,7 @@ public class PetEntityServiceImpl implements PetEntityService {
             petEntityToUpdate.setSpecie(petEntity.getSpecie());
             petEntityToUpdate.setRace(petEntity.getRace());
             petEntityToUpdate.setWeight(petEntity.getWeight());
-            petEntityToUpdate.setUser(petEntity.getUser());
+            petEntityToUpdate.setUser(petEntityToUpdate.getUser());
             petRepository.save(petEntityToUpdate);
         }
         return petEntityToUpdate;

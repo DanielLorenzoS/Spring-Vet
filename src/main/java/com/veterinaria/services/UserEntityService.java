@@ -17,4 +17,6 @@ public interface UserEntityService {
     ResponseEntity<?> getUserByEmail(String email);
 
     UserEntity getUserByUsername(String username);
+
+    UserEntity getUserByPetId(Long id);
 }

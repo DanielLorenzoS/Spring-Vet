@@ -12,9 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PetDTO {
-
-    private Long id;
+public class CreatePetDTO {
 
     private String name;
 
@@ -29,10 +27,6 @@ public class PetDTO {
 
     private float weight;
 
-    private int userId;
+    private Long userId;
 
-    private String userUsername;
-
-
-    
 }

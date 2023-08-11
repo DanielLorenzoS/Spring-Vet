@@ -66,4 +66,8 @@ public class UserEntityServiceImpl implements UserEntityService {
             return ResponseEntity.badRequest().body("El usuario no existe");
         }
     }
+
+    public UserEntity getUserByPetId(Long id) {
+        return userRepository.findByPetId(id).orElse(null);
+    }
 }

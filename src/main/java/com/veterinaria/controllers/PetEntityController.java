@@ -1,5 +1,6 @@
 package com.veterinaria.controllers;
 
+import com.veterinaria.controllers.request.CreatePetDTO;
 import com.veterinaria.controllers.request.PetDTO;
 import com.veterinaria.entities.PetEntity;
 import com.veterinaria.entities.UserEntity;
@@ -27,9 +28,18 @@ public class PetEntityController {
     UserRepository userRepository;
 
     @PostMapping("/")
-    public PetEntity savePet(@RequestBody PetEntity petEntity) {
-        System.out.println(petEntity);
-        return petEntityService.savePet(petEntity);
+    public PetEntity savePet(@RequestBody CreatePetDTO createPetDTO) {
+        PetEntity petEntity = new PetEntity();
+        petEntity.setName(createPetDTO.getName());
+        petEntity.setSex(createPetDTO.getSex());
+        petEntity.setBirthdate(createPetDTO.getBirthdate());
+        petEntity.setSpecie(createPetDTO.getSpecie());
+        petEntity.setRace(createPetDTO.getRace());
+        petEntity.setWeight(createPetDTO.getWeight());
+        UserEntity userEntity = userRepository.findById(createPetDTO.getUserId()).orElse(null);
+        petEntity.setUser(userEntity);
+        petEntityService.savePet(petEntity);
+        return petEntity;
     }
 
     @GetMapping("/")
@@ -52,24 +62,6 @@ public class PetEntityController {
         return petEntityService.getPetsByUser((long) id);
     }
 
-    /*@GetMapping("/imagen/{id}")
-    public ResponseEntity<byte[]> obtenerImagen(@PathVariable Long id) {
-        byte[] data = imageService.obtenerImagenPorId(id);
-        HttpHeaders headers = new HttpHeaders();
-        // Configurar los encabezados para el tipo de contenido adecuado
-        headers.setContentType(MediaType.IMAGE_JPEG); // Por ejemplo, para imágenes JPEG
-        return new ResponseEntity<>(data, headers, HttpStatus.OK);
-    }
-
-    @PostMapping("/imagen")
-    public ResponseEntity<String> guardarImagen(@RequestBody Map<String, Object> data) {
-        Long id = Long.parseLong(data.get("id").toString());
-        byte[] bytes = (byte[]) data.get("imagen");
-        String imageId = imageService.guardarImagen(bytes, id);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al guardar la imagen");
-    }*/
-
-
     @DeleteMapping("/{id}")
     public PetEntity deletePet(@PathVariable Long id) {
         return petEntityService.deletePet(id);
@@ -79,19 +71,23 @@ public class PetEntityController {
     public List<PetDTO> getUserWithPets() {
         List<UserEntity> users = userRepository.findAll();
         List<PetDTO> pets = new ArrayList<>();
+
         users.forEach(user -> {
-            PetDTO tempPet = new PetDTO();
             List<PetEntity> tempListPet = petRepository.findByUserId(user.getId());
+
             tempListPet.forEach(temp -> {
+                PetDTO tempPet = new PetDTO();  // Crear una instancia nueva en cada iteración
                 tempPet.setId(temp.getId());
                 tempPet.setName(temp.getName());
                 tempPet.setRace(temp.getRace());
                 tempPet.setSpecie(temp.getSpecie());
-                tempPet.setUserId(user.getId());
+                tempPet.setUserId(Math.toIntExact(user.getId()));
                 tempPet.setUserUsername(user.getUsername());
                 pets.add(tempPet);
             });
         });
+
         return pets;
     }
+
 }

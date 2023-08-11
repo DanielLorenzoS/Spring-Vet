@@ -2,6 +2,7 @@ package com.veterinaria.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -21,6 +22,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "pets")
+/*@JsonIgnoreProperties({"user"})*/
 public class PetEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +47,7 @@ public class PetEntity {
     @NotNull
     private float weight;
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private UserEntity user;
