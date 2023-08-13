@@ -14,5 +14,5 @@ public interface MedicineService {
 
     boolean delete(int id);
 
-    List<MedicineEntity> findByPrescriptionId(int id);
+    MedicineEntity getByName(String name);
 }

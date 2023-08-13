@@ -53,6 +53,6 @@ public class PetEntity {
     private UserEntity user;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pet", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "pet")
     private List<PrescriptionEntity> prescriptions;
 }

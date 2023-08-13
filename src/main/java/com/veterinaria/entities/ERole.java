@@ -1,5 +1,5 @@
 package com.veterinaria.entities;
 
 public enum ERole {
-    ADMIN, USER, INVITED, CLIENT
+    ADMIN, EMPLOYEE, USER, INVITED, CLIENT
 }

@@ -1,6 +1,7 @@
 package com.veterinaria.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -8,13 +9,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "medicines")
-public class MedicineEntity {
+@Table(name="doctors")
+public class DoctorEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,22 +26,14 @@ public class MedicineEntity {
     private String name;
 
     @NotBlank
-    private String description;
+    private String lastname;
 
-    @NotBlank
-    private String fabricator;
+    private String email;
 
-    @NotBlank
-    private String type;
+    private String phone;
 
-    @NotBlank
-    private String dose;
-
-    @NotBlank
-    private String via;
-
-    @NotBlank
-    @Column(name = "medication_interval")
-    private String interval;
+    /*@OneToMany(mappedBy = "doctor", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "doctor")
+    private List<PrescriptionEntity> prescriptions;*/
 
 }

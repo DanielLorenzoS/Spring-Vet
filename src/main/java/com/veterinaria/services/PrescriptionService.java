@@ -1,5 +1,6 @@
 package com.veterinaria.services;
 
+import com.veterinaria.entities.DoctorEntity;
 import com.veterinaria.entities.PrescriptionEntity;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface PrescriptionService {
     boolean deleteById(int id);
 
     List<PrescriptionEntity> getAll();
+
 }

@@ -52,11 +52,14 @@ public class UserEntityController {
     }
 
     @PutMapping("/updatetoadmin")
-    public UserEntity updateUser(@RequestBody UserEntity userEntity) {
+    public UpdateUserDTO updateUser(@RequestBody UpdateUserDTO updateUserDTO) {
+        UserEntity userEntity = (UserEntity) userEntityService.getUserByEmail(updateUserDTO.getEmail()).getBody();
+        assert userEntity != null;
         Set<RoleEntity> roles = userEntity.getRoles();
         RoleEntity role = userEntity.getRoles().stream().reduce((role1, role2) -> role1).get();
         role.setName(ERole.valueOf("ADMIN"));
-        return userEntityService.updateUser(Optional.of(userEntity));
+        userEntityService.updateUser(Optional.of(userEntity));
+        return updateUserDTO;
     }
 
     @GetMapping("/user/{username}")

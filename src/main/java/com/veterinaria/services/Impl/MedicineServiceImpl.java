@@ -35,7 +35,7 @@ public class MedicineServiceImpl implements MedicineService {
         }
     }
 
-    public List<MedicineEntity> findByPrescriptionId(int id) {
-        return medicineRepository.findByPrescriptionId((long) id);
+    public MedicineEntity getByName(String name) {
+        return medicineRepository.findByName(name);
     }
 }

@@ -1,9 +1,6 @@
 package com.veterinaria.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -13,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -26,18 +24,38 @@ public class PrescriptionEntity {
     private Long id;
 
     @NotBlank
-    private Date creationDate;
+    private String symtomps;
 
     @NotBlank
+    private String diagnosis;
+
+    @NotBlank
+    private String status;
+
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private Date creationDate;
+
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date finalizationDate;
 
     @NotBlank
-    @OneToMany(mappedBy = "prescription", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<MedicineEntity> medicines;
+    private String observations;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "prescription_doctor",
+            joinColumns = @JoinColumn(name = "prescription_id"),
+            inverseJoinColumns = @JoinColumn(name = "doctor_id"))
+    private Set<DoctorEntity> doctors;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "prescription_medicine",
+            joinColumns = @JoinColumn(name = "prescription_id"),
+            inverseJoinColumns = @JoinColumn(name = "medicine_id"))
+    private Set<MedicineEntity> medicines;
+
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JsonBackReference(value = "pet")
     @JoinColumn(name = "pet_id")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     private PetEntity pet;

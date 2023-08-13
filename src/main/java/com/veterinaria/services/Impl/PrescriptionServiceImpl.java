@@ -1,5 +1,6 @@
 package com.veterinaria.services.Impl;
 
+import com.veterinaria.entities.DoctorEntity;
 import com.veterinaria.entities.PrescriptionEntity;
 import com.veterinaria.repositories.PrescriptionRepository;
 import com.veterinaria.services.PrescriptionService;
@@ -18,7 +19,7 @@ public class PrescriptionServiceImpl implements PrescriptionService {
         return repository.save(prescriptionEntity);
     }
 
-    public List<PrescriptionEntity> getAll(){
+    public List<PrescriptionEntity> getAll() throws NullPointerException {
         return repository.findAll();
     }
 
