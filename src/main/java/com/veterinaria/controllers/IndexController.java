@@ -57,16 +57,6 @@ public class IndexController {
     @Autowired
     EmailService emailService;
 
-    @GetMapping("/index")
-    public UserEntity index() {
-        return userRepository.findById(7L).get();
-    }
-
-    @GetMapping("/indexsecured")
-    public String indexSecured() {
-        return "Hello World Secured";
-    }
-
     @PostMapping("/createuser")
     public ResponseEntity<?> createUser(@Valid @RequestBody CreateUserDTO createUserDTO) throws MessagingException {
 

@@ -58,13 +58,8 @@ public class UserEntityServiceImpl implements UserEntityService {
         return listUsersRoles;
     }
 
-    public ResponseEntity<?> getUserByEmail(String email) {
-        UserEntity userEntity = userRepository.findByEmail(email).orElse(null);
-        if (userEntity != null) {
-            return ResponseEntity.ok(userEntity);
-        } else {
-            return ResponseEntity.badRequest().body("El usuario no existe");
-        }
+    public UserEntity getUserByEmail(String email) {
+        return userRepository.findByEmail(email).orElse(null);
     }
 
     public UserEntity getUserByPetId(Long id) {

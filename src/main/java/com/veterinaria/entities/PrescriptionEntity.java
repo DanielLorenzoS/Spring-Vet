@@ -47,11 +47,17 @@ public class PrescriptionEntity {
             inverseJoinColumns = @JoinColumn(name = "doctor_id"))
     private Set<DoctorEntity> doctors;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    /*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "prescription_medicine",
             joinColumns = @JoinColumn(name = "prescription_id"),
             inverseJoinColumns = @JoinColumn(name = "medicine_id"))
-    private Set<MedicineEntity> medicines;
+    private Set<MedicineEntity> medicines;*/
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "prescription_relation",
+            joinColumns = @JoinColumn(name = "prescription_id"),
+            inverseJoinColumns = @JoinColumn(name = "relation_id"))
+    private List<RelationPrescriptionMedicine> relations;
 
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)

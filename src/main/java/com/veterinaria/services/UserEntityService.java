@@ -14,9 +14,11 @@ public interface UserEntityService {
 
     List<UserEntity> getAllUsersByRoles(String role);
 
-    ResponseEntity<?> getUserByEmail(String email);
+    UserEntity getUserByEmail(String email);
 
     UserEntity getUserByUsername(String username);
 
     UserEntity getUserByPetId(Long id);
+
+    UserEntity getUserByPhone(String phone);
 }

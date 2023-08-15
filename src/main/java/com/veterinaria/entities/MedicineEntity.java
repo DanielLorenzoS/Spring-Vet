@@ -31,14 +31,4 @@ public class MedicineEntity {
     @NotBlank
     private String type;
 
-    @NotBlank
-    private String dose;
-
-    @NotBlank
-    private String via;
-
-    @NotBlank
-    @Column(name = "medication_interval")
-    private String interval;
-
 }

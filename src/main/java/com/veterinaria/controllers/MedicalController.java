@@ -3,9 +3,11 @@ package com.veterinaria.controllers;
 import com.veterinaria.entities.DoctorEntity;
 import com.veterinaria.entities.MedicineEntity;
 import com.veterinaria.entities.PrescriptionEntity;
+import com.veterinaria.entities.RelationPrescriptionMedicine;
 import com.veterinaria.services.DoctorService;
 import com.veterinaria.services.MedicineService;
 import com.veterinaria.services.PrescriptionService;
+import com.veterinaria.services.RelationPrescriptionMedicineService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,9 @@ public class MedicalController {
 
     @Autowired
     MedicineService medicineService;
+
+    @Autowired
+    RelationPrescriptionMedicineService relationPrescriptionMedicineService;
 
     @GetMapping("/prescription")
     public List<PrescriptionEntity> getAllPrescription() {
@@ -44,6 +49,9 @@ public class MedicalController {
     public PrescriptionEntity deletePrescription(@PathVariable int id) {
         PrescriptionEntity prescription = prescriptionService.getById(id);
         prescriptionService.deleteById(id);
+        prescription.getRelations().forEach(relation -> {
+            relationPrescriptionMedicineService.deleteRelationPrescriptionMedicine(relation.getId());
+        });
         return prescription;
     }
 
@@ -72,4 +80,13 @@ public class MedicalController {
         return medicineService.getByName(name);
     }
 
+    @GetMapping("/relation")
+    public List<RelationPrescriptionMedicine> getAllRelation() {
+        return relationPrescriptionMedicineService.getAllRelationPrescriptionMedicine();
+    }
+
+    @PostMapping("/relation")
+    public RelationPrescriptionMedicine createRelation(@Valid @RequestBody RelationPrescriptionMedicine relation) {
+        return relationPrescriptionMedicineService.saveRelationPrescriptionMedicine(relation);
+    }
 }

@@ -9,6 +9,7 @@ import com.veterinaria.repositories.UserRepository;
 import com.veterinaria.services.UserEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class UserEntityController {
 
     @PutMapping("/update")
     public UserEntity updateUser(@RequestBody UpdateUserPassDTO updateUserPassDTO) {
-        UserEntity userEntity = (UserEntity) userEntityService.getUserByEmail(updateUserPassDTO.getEmail()).getBody();
+        UserEntity userEntity = userEntityService.getUserByEmail(updateUserPassDTO.getEmail());
         assert userEntity != null;
         userEntity.setPassword(updateUserPassDTO.getPassword());
         return userEntityService.updateUser(Optional.of(userEntity));
@@ -53,16 +54,26 @@ public class UserEntityController {
 
     @PutMapping("/updatetoadmin")
     public UpdateUserDTO updateUser(@RequestBody UpdateUserDTO updateUserDTO) {
-        UserEntity userEntity = (UserEntity) userEntityService.getUserByEmail(updateUserDTO.getEmail()).getBody();
+        UserEntity userEntity = userEntityService.getUserByUsername(updateUserDTO.getUsername());
         assert userEntity != null;
-        Set<RoleEntity> roles = userEntity.getRoles();
         RoleEntity role = userEntity.getRoles().stream().reduce((role1, role2) -> role1).get();
         role.setName(ERole.valueOf("ADMIN"));
-        userEntityService.updateUser(Optional.of(userEntity));
+        userRepository.save(userEntity);
         return updateUserDTO;
     }
 
-    @GetMapping("/user/{username}")
+    @PutMapping("/updatetoemployee")
+    public UpdateUserDTO updateToEmployee(@RequestBody UpdateUserDTO updateUserDTO) {
+        UserEntity userEntity = userEntityService.getUserByUsername(updateUserDTO.getUsername());
+        assert userEntity != null;
+        RoleEntity role = userEntity.getRoles().stream().reduce((role1, role2) -> role1).get();
+        role.setName(ERole.valueOf("EMPLOYEE"));
+        userRepository.save(userEntity);
+        return updateUserDTO;
+
+    }
+
+    @GetMapping("/user/username/{username}")
     public UserEntity getUserByUsername(@PathVariable String username) {
         return userEntityService.getUserByUsername(username);
     }
@@ -72,9 +83,14 @@ public class UserEntityController {
         return userEntityService.getAllUsersByRoles(role);
     }
 
-    @GetMapping("/user/email")
-    public ResponseEntity<?> getUserByEmail(String email) {
+    @GetMapping("/user/email/{email}")
+    public UserEntity getUserByEmail(@PathVariable String email) {
         return userEntityService.getUserByEmail(email);
+    }
+
+    @GetMapping("/user/phone/{phone}")
+    public UserEntity getUserByPhone(@PathVariable String phone) {
+        return userEntityService.getUserByPhone(phone);
     }
 
     @GetMapping("/user/pet/{id}")
