@@ -19,4 +19,6 @@ public interface PetEntityService {
     PetEntity updatePet(PetEntity petEntity);
 
     PetEntity deletePet(Long id);
+
+    int countBySpecies(String species);
 }

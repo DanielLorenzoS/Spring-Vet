@@ -58,7 +58,7 @@ public class SecurityConfig {
                     return corsConfiguration;
                 }))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/login","/generate", "/recover", "/update" , "/actualuser/**" , "/createuser", "/email/**").permitAll()
+                        .requestMatchers("/auth/login","/generate", "/recover", "/update" , "/actualuser/**" , "/createuser", "/email/**", "/exists/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session

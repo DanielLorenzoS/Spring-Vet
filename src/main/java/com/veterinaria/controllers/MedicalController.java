@@ -1,10 +1,12 @@
 package com.veterinaria.controllers;
 
+import com.veterinaria.controllers.request.MedicinesCountDTO;
 import com.veterinaria.entities.DoctorEntity;
 import com.veterinaria.entities.MedicineEntity;
 import com.veterinaria.entities.PrescriptionEntity;
 import com.veterinaria.entities.RelationPrescriptionMedicine;
 import com.veterinaria.services.DoctorService;
+import com.veterinaria.services.Impl.MedicineCounter;
 import com.veterinaria.services.MedicineService;
 import com.veterinaria.services.PrescriptionService;
 import com.veterinaria.services.RelationPrescriptionMedicineService;
@@ -29,6 +31,9 @@ public class MedicalController {
 
     @Autowired
     RelationPrescriptionMedicineService relationPrescriptionMedicineService;
+
+    @Autowired
+    MedicineCounter medicineCounter;
 
     @GetMapping("/prescription")
     public List<PrescriptionEntity> getAllPrescription() {
@@ -88,5 +93,10 @@ public class MedicalController {
     @PostMapping("/relation")
     public RelationPrescriptionMedicine createRelation(@Valid @RequestBody RelationPrescriptionMedicine relation) {
         return relationPrescriptionMedicineService.saveRelationPrescriptionMedicine(relation);
+    }
+
+    @GetMapping("/count")
+    public List<MedicinesCountDTO> countMedicines() {
+        return medicineCounter.countMedicines();
     }
 }

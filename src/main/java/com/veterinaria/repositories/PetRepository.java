@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface PetRepository extends JpaRepository<PetEntity, Long> {
     List<PetEntity> findByUserId(Long id);
+
+    int countBySpecie(String species);
 }

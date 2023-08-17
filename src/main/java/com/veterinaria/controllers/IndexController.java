@@ -71,11 +71,16 @@ public class IndexController {
                 .username(createUserDTO.getUsername())
                 .password(passwordEncoder.encode(createUserDTO.getPassword()))
                 .roles(roles)
+                .createdAt(createUserDTO.getCreatedAt())
                 .build();
+        System.out.println(createUserDTO);
         System.out.println(userEntity);
         userRepository.save(userEntity);
 
-        emailService.sendEmail(userEntity.getEmail(), "Confirmar correo electrónico", "register.html");
+        if (!createUserDTO.getRoles().contains("CLIENT")) {
+            emailService.sendEmail(userEntity.getEmail(), "Confirmar correo electrónico", "register.html");
+        }
+
 
         return ResponseEntity.ok(userEntity);
     }

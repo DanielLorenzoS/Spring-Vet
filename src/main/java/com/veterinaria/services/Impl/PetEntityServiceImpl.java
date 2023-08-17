@@ -63,4 +63,8 @@ public class PetEntityServiceImpl implements PetEntityService {
         return petEntity;
     }
 
+    public int countBySpecies(String species) {
+        return petRepository.countBySpecie(species);
+    }
+
 }
