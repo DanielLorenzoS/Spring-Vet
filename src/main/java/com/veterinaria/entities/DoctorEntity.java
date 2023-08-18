@@ -32,8 +32,9 @@ public class DoctorEntity {
 
     private String phone;
 
-    /*@OneToMany(mappedBy = "doctor", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JsonManagedReference(value = "doctor")
-    private List<PrescriptionEntity> prescriptions;*/
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "appointment_id")
+    @JsonBackReference(value = "doctor-appointment")
+    private AppointmentEntity appointment;
 
 }

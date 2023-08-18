@@ -6,7 +6,9 @@ import com.veterinaria.entities.PetEntity;
 import com.veterinaria.entities.UserEntity;
 import com.veterinaria.repositories.PetRepository;
 import com.veterinaria.repositories.UserRepository;
+import com.veterinaria.services.AppointmentService;
 import com.veterinaria.services.PetEntityService;
+import com.veterinaria.services.RelationPrescriptionMedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,12 @@ public class PetEntityController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    RelationPrescriptionMedicineService relationPrescriptionMedicineService;
+
+    @Autowired
+    AppointmentService appointmentService;
+
     @PostMapping("/")
     public PetEntity savePet(@RequestBody CreatePetDTO createPetDTO) {
         PetEntity petEntity = new PetEntity();
@@ -44,6 +52,7 @@ public class PetEntityController {
 
     @GetMapping("/")
     public List<PetEntity> getPets() {
+        System.out.println(petEntityService.getPets());
         return petEntityService.getPets();
     }
 

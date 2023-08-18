@@ -128,4 +128,5 @@ public class UserEntityController {
         booleanDTO.setValue(userEntityService.getUserByPhone(phone) != null);
         return booleanDTO;
     }
+
 }

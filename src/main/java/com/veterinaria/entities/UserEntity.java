@@ -1,6 +1,7 @@
 package com.veterinaria.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -49,6 +50,10 @@ public class UserEntity {
     private Set<RoleEntity> roles;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = PetEntity.class)
-    @JsonManagedReference
+    @JsonManagedReference(value = "user-pets")
     private Set<PetEntity> pets;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.MERGE, fetch = FetchType.LAZY, targetEntity = AppointmentEntity.class)
+    @JsonManagedReference(value = "user-appointments")
+    private Set<AppointmentEntity> appointments;
 }

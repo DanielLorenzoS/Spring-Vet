@@ -1,58 +1,61 @@
 package com.veterinaria.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
 @Table(name = "pets")
-/*@JsonIgnoreProperties({"user"})*/
+@JsonIgnoreProperties({"appointments"})
 public class PetEntity {
 
+    @Getter @Setter
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Getter @Setter
     @NotBlank
     private String name;
 
+    @Getter @Setter
     @NotBlank
     private String sex;
 
+    @Getter @Setter
     @NotNull @Past
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date birthdate;
 
+    @Getter @Setter
     @NotBlank
     private String specie;
 
+    @Getter @Setter
     @NotBlank
     private String race;
 
+    @Getter @Setter
     @NotNull
     private float weight;
 
-    @JsonBackReference
+    @Getter @Setter
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
+    @JsonBackReference(value = "user-pets")
     private UserEntity user;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pet", cascade = CascadeType.ALL)
+    @Getter @Setter
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pet", cascade = CascadeType.MERGE)
     @JsonManagedReference(value = "pet")
     private List<PrescriptionEntity> prescriptions;
+
 }

@@ -1,5 +1,6 @@
 package com.veterinaria.services.Impl;
 
+import com.veterinaria.entities.AppointmentEntity;
 import com.veterinaria.entities.PetEntity;
 import com.veterinaria.entities.UserEntity;
 import com.veterinaria.repositories.PetRepository;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PetEntityServiceImpl implements PetEntityService {
@@ -32,6 +34,7 @@ public class PetEntityServiceImpl implements PetEntityService {
     public PetEntity getPet(Long id) {
         return petRepository.findById(id).orElse(null);
     }
+
 
     public PetEntity updatePet(PetEntity petEntity) {
         PetEntity petEntityToUpdate = petRepository.findById(petEntity.getId()).orElse(null);
