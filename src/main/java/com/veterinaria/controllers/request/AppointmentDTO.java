@@ -12,18 +12,14 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AppointmentWithUserDTO {
+public class AppointmentDTO {
 
     private Long id;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date date;
     private String reason;
     private String status;
-    private String type;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date date;
     private Long userId;
-    private String user;
     private Long petId;
-    private String pet;
     private Long doctorId;
-    private String doctor;
 }

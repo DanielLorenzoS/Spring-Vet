@@ -32,9 +32,4 @@ public class DoctorEntity {
 
     private String phone;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "appointment_id")
-    @JsonBackReference(value = "doctor-appointment")
-    private AppointmentEntity appointment;
-
 }

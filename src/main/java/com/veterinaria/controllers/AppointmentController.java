@@ -1,6 +1,8 @@
 package com.veterinaria.controllers;
 
+import com.veterinaria.controllers.request.AppointmentDTO;
 import com.veterinaria.controllers.request.AppointmentWithUserDTO;
+import com.veterinaria.controllers.request.UpdateAppointmentStatusDTO;
 import com.veterinaria.entities.AppointmentEntity;
 import com.veterinaria.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/{id}")
-    public AppointmentEntity getAppointmentById(Long id) {
+    public AppointmentEntity getAppointmentById(@PathVariable Long id) {
         return appointmentService.getAppointmentById(id);
     }
 
@@ -48,5 +50,25 @@ public class AppointmentController {
     @GetMapping("/all")
     public List<AppointmentWithUserDTO> getAllAppointmentsWithUsers() {
         return appointmentService.getAllAppointmentsWithUsers();
+    }
+
+    /*@PutMapping("/")
+    public AppointmentEntity updateAppointment(@RequestBody AppointmentEntity appointment) {
+        return appointmentService.updateAppointment(appointment);
+    }*/
+
+    @PutMapping("/status")
+    public UpdateAppointmentStatusDTO updateAppointmentStatus(@RequestBody UpdateAppointmentStatusDTO updateAppointmentStatusDTO) {
+        return appointmentService.updateStatusAppointment(updateAppointmentStatusDTO);
+    }
+
+    @GetMapping("/all/{id}")
+    public AppointmentWithUserDTO getById(@PathVariable Long id) {
+        return appointmentService.getById(id);
+    }
+
+    @PutMapping("/update")
+    public AppointmentEntity updateAppointment(@RequestBody AppointmentDTO appointment) {
+        return appointmentService.updateAppointment(appointment);
     }
 }

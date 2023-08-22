@@ -22,14 +22,12 @@ public class AppointmentEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date date;
 
     private String reason;
 
     private String status;
-
-    private String type;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_user")
@@ -42,7 +40,9 @@ public class AppointmentEntity {
             inverseJoinColumns = @JoinColumn(name = "pet_id"))
     private List<PetEntity> pets;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "appointment", cascade = CascadeType.MERGE)
-    @JsonBackReference(value = "doctor-appointment")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "appointment_doctor",
+            joinColumns = @JoinColumn(name = "appointment_id"),
+            inverseJoinColumns = @JoinColumn(name = "doctor_id"))
     private List<DoctorEntity> doctors;
 }
