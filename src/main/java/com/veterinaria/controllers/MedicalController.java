@@ -103,6 +103,23 @@ public class MedicalController {
         return medicineService.getByName(name);
     }
 
+    @GetMapping("/medicine/id/{id}")
+    public MedicineEntity getMedicineById(@PathVariable int id) {
+        return medicineService.findById(id);
+    }
+
+    @PutMapping("/medicine")
+    public MedicineEntity updateMedicine(@Valid @RequestBody MedicineEntity medicine) {
+        return medicineService.save(medicine);
+    }
+
+    @DeleteMapping("/medicine/delete/{id}")
+    public MedicineEntity deleteMedicine(@PathVariable int id) {
+        MedicineEntity medicine = medicineService.findById(id);
+        medicineService.delete(id);
+        return medicine;
+    }
+
     @GetMapping("/relation")
     public List<RelationPrescriptionMedicine> getAllRelation() {
         return relationPrescriptionMedicineService.getAllRelationPrescriptionMedicine();
