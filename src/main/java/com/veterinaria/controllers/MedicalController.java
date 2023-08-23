@@ -65,10 +65,28 @@ public class MedicalController {
         return doctorService.getAll();
     }
 
+    @GetMapping("/doctor/{id}")
+    public DoctorEntity getDoctorById(@PathVariable int id) {
+        return doctorService.getById((long) id);
+    }
+
     @PostMapping("/doctor")
     public DoctorEntity createDoctor(@Valid @RequestBody DoctorEntity doctor) {
         return doctorService.save(doctor);
     }
+
+    @DeleteMapping("/doctor/{id}")
+    public DoctorEntity deleteDoctor(@PathVariable int id) {
+        DoctorEntity doctor = doctorService.getById((long) id);
+        doctorService.deleteById((long) id);
+        return doctor;
+    }
+
+    @PutMapping("/doctor")
+    public DoctorEntity updateDoctor(@Valid @RequestBody DoctorEntity doctor) {
+        return doctorService.save(doctor);
+    }
+
 
     @GetMapping("/medicine")
     public List<MedicineEntity> getAllMedicine() {

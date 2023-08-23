@@ -32,4 +32,6 @@ public class DoctorEntity {
 
     private String phone;
 
+    private String status;
+
 }

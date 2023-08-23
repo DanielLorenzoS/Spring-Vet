@@ -2,6 +2,7 @@
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/CreateUserDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/repositories/DoctorRepository.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/EmailController.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/AppointmentService.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/repositories/PrescriptionRepository.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/PetDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/PetEntityServiceImpl.java
@@ -34,11 +35,15 @@
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/security/jwt/JwtUtils.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/entities/MedicineEntity.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/LoginUserDTO.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/AppointmentDTO.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/AppointmentServiceImpl.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/MedicinesCountDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/entities/TokenEntity.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/EmailServiceImpl.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/DoctorService.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/AppointmentWithUserDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/DoctorServiceImpl.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/AppointmentController.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/MedicalHistoryServiceImpl.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/BooleanDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/configurations/MailSenderConfig.java
@@ -59,7 +64,10 @@
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/RelationPrescriptionMedicineService.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/PrescriptionService.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/ResponseDTO.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/entities/AppointmentEntity.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/UserEntityService.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/UpdateUserDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/MedicineCounter.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/UpdateAppointmentStatusDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/EmailCodeDTO.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/repositories/AppointmentRepository.java
