@@ -45,4 +45,10 @@ public class AppointmentEntity {
             joinColumns = @JoinColumn(name = "appointment_id"),
             inverseJoinColumns = @JoinColumn(name = "doctor_id"))
     private List<DoctorEntity> doctors;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "appointment_service",
+            joinColumns = @JoinColumn(name = "appointment_id"),
+            inverseJoinColumns = @JoinColumn(name = "service_id"))
+    private List<ServiceEntity> services;
 }

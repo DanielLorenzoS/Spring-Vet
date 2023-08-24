@@ -22,4 +22,5 @@ public class AppointmentDTO {
     private Long userId;
     private Long petId;
     private Long doctorId;
+    private Long serviceId;
 }

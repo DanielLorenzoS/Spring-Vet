@@ -3,14 +3,8 @@ package com.veterinaria.services.Impl;
 import com.veterinaria.controllers.request.AppointmentDTO;
 import com.veterinaria.controllers.request.AppointmentWithUserDTO;
 import com.veterinaria.controllers.request.UpdateAppointmentStatusDTO;
-import com.veterinaria.entities.AppointmentEntity;
-import com.veterinaria.entities.DoctorEntity;
-import com.veterinaria.entities.PetEntity;
-import com.veterinaria.entities.UserEntity;
-import com.veterinaria.repositories.AppointmentRepository;
-import com.veterinaria.repositories.DoctorRepository;
-import com.veterinaria.repositories.PetRepository;
-import com.veterinaria.repositories.UserRepository;
+import com.veterinaria.entities.*;
+import com.veterinaria.repositories.*;
 import com.veterinaria.services.AppointmentService;
 import com.veterinaria.services.UserEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +31,9 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Autowired
     DoctorRepository doctorRepository;
 
+    @Autowired
+    ServiceRepository serviceRepository;
+
     public List<AppointmentEntity> getAllAppointments() {
         return appointmentRepository.findAll();
     }
@@ -59,6 +56,8 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointmentWithUserDTO.setPet(appointmentEntity.getPets().stream().reduce((pet1, pet2) -> pet1).get().getName());
         appointmentWithUserDTO.setDoctorId(appointmentEntity.getDoctors().stream().reduce((doctor1, doctor2) -> doctor1).get().getId());
         appointmentWithUserDTO.setDoctor(appointmentEntity.getDoctors().stream().reduce((doctor1, doctor2) -> doctor1).get().getName());
+        appointmentWithUserDTO.setServiceId(appointmentEntity.getServices().stream().reduce((service1, service2) -> service1).get().getId());
+        appointmentWithUserDTO.setService(appointmentEntity.getServices().stream().reduce((service1, service2) -> service1).get().getName());
         return appointmentWithUserDTO;
     }
 
@@ -99,6 +98,8 @@ public class AppointmentServiceImpl implements AppointmentService {
                 appointmentWithUserDTO.setPet(appointmentEntity.getPets().stream().reduce((pet1, pet2) -> pet1).get().getName());
                 appointmentWithUserDTO.setDoctorId(appointmentEntity.getDoctors().stream().reduce((doctor1, doctor2) -> doctor1).get().getId());
                 appointmentWithUserDTO.setDoctor(appointmentEntity.getDoctors().stream().reduce((doctor1, doctor2) -> doctor1).get().getName());
+                appointmentWithUserDTO.setServiceId(appointmentEntity.getServices().stream().reduce((service1, service2) -> service1).get().getId());
+                appointmentWithUserDTO.setService(appointmentEntity.getServices().stream().reduce((service1, service2) -> service1).get().getName());
                 appointmentsDTO.add(appointmentWithUserDTO);
             }
         }
@@ -125,6 +126,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         List<DoctorEntity> doctors = new ArrayList<>();
         DoctorEntity doctor = doctorRepository.findById(appointmentDTO.getDoctorId()).orElse(null);
         doctors.add(doctor);
+        List<ServiceEntity> services = new ArrayList<>();
+        ServiceEntity service = serviceRepository.findById(Math.toIntExact(appointmentDTO.getServiceId())).orElse(null);
+        services.add(service);
 
         if (appointment != null) {
             appointment.setDate(appointmentDTO.getDate());
@@ -133,6 +137,7 @@ public class AppointmentServiceImpl implements AppointmentService {
             appointment.setUser(user);
             appointment.setPets(pets);
             appointment.setDoctors(doctors);
+            appointment.setServices(services);
             appointmentRepository.save(appointment);
         }
         return appointment;

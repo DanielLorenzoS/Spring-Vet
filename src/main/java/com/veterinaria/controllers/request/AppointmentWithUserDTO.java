@@ -17,7 +17,6 @@ public class AppointmentWithUserDTO {
     private Long id;
     private String reason;
     private String status;
-    private String type;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date;
     private Long userId;
@@ -26,4 +25,6 @@ public class AppointmentWithUserDTO {
     private String pet;
     private Long doctorId;
     private String doctor;
+    private Long serviceId;
+    private String service;
 }
