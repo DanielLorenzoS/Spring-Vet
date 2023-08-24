@@ -30,4 +30,8 @@ public class ServiceEntityServiceImpl implements ServiceEntityService {
         return serviceEntity;
     }
 
+    public ServiceEntity updateService(ServiceEntity serviceEntity) {
+        return serviceRepository.save(serviceEntity);
+    }
+
 }

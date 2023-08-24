@@ -18,7 +18,7 @@ public class ServiceController {
     }
 
     @GetMapping("/{id}")
-    public ServiceEntity findById(Integer id) {
+    public ServiceEntity findById(@PathVariable Integer id) {
         return serviceEntityService.findById(id);
     }
 
@@ -30,5 +30,10 @@ public class ServiceController {
     @DeleteMapping("/{id}")
     public ServiceEntity deleteById(@PathVariable int id) {
         return serviceEntityService.deleteById(id);
+    }
+
+    @PutMapping("/")
+    public ServiceEntity updateService(@RequestBody ServiceEntity serviceEntity) {
+        return serviceEntityService.updateService(serviceEntity);
     }
 }

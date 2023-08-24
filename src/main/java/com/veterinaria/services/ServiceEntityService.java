@@ -11,4 +11,6 @@ public interface ServiceEntityService {
     Iterable<ServiceEntity> findAll();
 
     ServiceEntity deleteById(Integer id);
+
+    ServiceEntity updateService(ServiceEntity serviceEntity);
 }
