@@ -1,3 +1,4 @@
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/repositories/ServiceRepository.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/security/SecurityConfig.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/CreateUserDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/repositories/DoctorRepository.java
@@ -25,14 +26,17 @@
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/security/jwt/TokenResponse.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/CreatePetDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/configurations/CORSConfiguration.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/ServiceEntityServiceImpl.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/MedicineServiceImpl.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/repositories/PetRepository.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/entities/ServiceEntity.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/MedicineService.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/repositories/MedicalHistoryRepository.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/repositories/RoleRepository.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/DashboardController.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/entities/DoctorEntity.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/security/jwt/JwtUtils.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/ServiceController.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/entities/MedicineEntity.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/LoginUserDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/AppointmentDTO.java
@@ -63,6 +67,7 @@
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/repositories/EmailCodeDTORepository.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/RelationPrescriptionMedicineService.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/PrescriptionService.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/ServiceEntityService.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/ResponseDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/entities/AppointmentEntity.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/UserEntityService.java

@@ -41,6 +41,7 @@ public class PetEntityServiceImpl implements PetEntityService {
         if (petEntityToUpdate != null) {
             petEntityToUpdate.setName(petEntity.getName());
             petEntityToUpdate.setBirthdate(petEntity.getBirthdate());
+            petEntityToUpdate.setSex(petEntity.getSex());
             petEntityToUpdate.setSpecie(petEntity.getSpecie());
             petEntityToUpdate.setRace(petEntity.getRace());
             petEntityToUpdate.setWeight(petEntity.getWeight());

@@ -125,7 +125,6 @@ public class IndexController {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginUserDTO.getUsername(), loginUserDTO.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            System.out.println(authentication.getName());
             String jwt = jwtUtils.generateAccessToken(authentication.getName());
             TokenResponse tokenResponse = new TokenResponse();
             tokenResponse.setToken(jwt);
