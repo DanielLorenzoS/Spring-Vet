@@ -47,6 +47,8 @@
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/DoctorService.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/AppointmentWithUserDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/DoctorServiceImpl.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/ServicesCountDTO.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/ServiceCounter.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/AppointmentController.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/MedicalHistoryServiceImpl.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/BooleanDTO.java
