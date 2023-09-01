@@ -3,6 +3,7 @@ package com.veterinaria.services.Impl;
 import com.veterinaria.entities.AppointmentEntity;
 import com.veterinaria.entities.PetEntity;
 import com.veterinaria.entities.UserEntity;
+import com.veterinaria.repositories.AppointmentRepository;
 import com.veterinaria.repositories.PetRepository;
 import com.veterinaria.repositories.UserRepository;
 import com.veterinaria.services.PetEntityService;
@@ -22,6 +23,9 @@ public class PetEntityServiceImpl implements PetEntityService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    AppointmentRepository appointmentRepository;
 
     public PetEntity savePet(PetEntity petEntity) {
         return petRepository.save(petEntity);

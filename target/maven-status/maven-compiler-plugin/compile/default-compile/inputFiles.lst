@@ -33,6 +33,7 @@
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/MedicineService.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/repositories/MedicalHistoryRepository.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/repositories/RoleRepository.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/configurations/DatabaseConfig.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/DashboardController.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/entities/DoctorEntity.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/security/jwt/JwtUtils.java
