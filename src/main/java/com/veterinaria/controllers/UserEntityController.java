@@ -9,13 +9,10 @@ import com.veterinaria.entities.UserEntity;
 import com.veterinaria.repositories.UserRepository;
 import com.veterinaria.services.UserEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/")

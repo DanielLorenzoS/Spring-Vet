@@ -72,7 +72,7 @@ public class PetEntityController {
     }
 
     @DeleteMapping("/{id}")
-    public PetEntity deletePet(@PathVariable Long id) {
+    public PetDTO deletePet(@PathVariable Long id) {
         return petEntityService.deletePet(id);
     }
 

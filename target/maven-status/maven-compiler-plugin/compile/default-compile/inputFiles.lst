@@ -22,6 +22,7 @@
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/entities/UserEntity.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/Impl/RelationPrescriptionMedicineImpl.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/EmailService.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/exceptions/UserNotFoundException.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/UpdateUserPassDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/security/jwt/TokenResponse.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/CreatePetDTO.java
@@ -71,6 +72,7 @@
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/RelationPrescriptionMedicineService.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/PrescriptionService.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/ServiceEntityService.java
+/home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/exceptions/PetNotFoundException.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/controllers/request/ResponseDTO.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/entities/AppointmentEntity.java
 /home/dani/Documents/prueba-error/Spring-Vet/src/main/java/com/veterinaria/services/UserEntityService.java

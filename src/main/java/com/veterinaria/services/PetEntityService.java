@@ -1,5 +1,6 @@
 package com.veterinaria.services;
 
+import com.veterinaria.controllers.request.PetDTO;
 import com.veterinaria.entities.PetEntity;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public interface PetEntityService {
 
     PetEntity updatePet(PetEntity petEntity);
 
-    PetEntity deletePet(Long id);
+    PetDTO deletePet(Long id);
 
     int countBySpecies(String species);
 }

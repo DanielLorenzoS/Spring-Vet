@@ -1,8 +1,10 @@
 package com.veterinaria.services.Impl;
 
+import com.veterinaria.controllers.request.UpdateUserDTO;
 import com.veterinaria.entities.PetEntity;
 import com.veterinaria.entities.RoleEntity;
 import com.veterinaria.entities.UserEntity;
+import com.veterinaria.exceptions.UserNotFoundException;
 import com.veterinaria.repositories.PetRepository;
 import com.veterinaria.repositories.RoleRepository;
 import com.veterinaria.repositories.UserRepository;
@@ -46,18 +48,28 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                     authorities);
     }
 
-    public ResponseEntity<?> deleteUser(Long id) {
-        List<PetEntity> pets = petEntityServiceImpl.getPetsByUser(id);
-        pets.forEach(pet -> {
-            petEntityServiceImpl.deletePet(pet.getId());
-        });
+    public UpdateUserDTO deleteUser(Long id) {
 
         UserEntity user = userRepository.findById(id).orElse(null);
+        System.out.println(user);
+        if (user == null) {
+            throw new UserNotFoundException("No se encontró al usuario con el ID proporcionado.");
+        }
+
+        UpdateUserDTO updateUserDTO = new UpdateUserDTO();
+        List<PetEntity> pets = petEntityServiceImpl.getPetsByUser(id);
+        pets.forEach(pet -> petEntityServiceImpl.deletePet(pet.getId()));
 
         RoleEntity role = user.getRoles().stream().reduce((role1, role2) -> role1).get();
         roleRepository.deleteById(role.getId());
 
+        updateUserDTO.setId(Math.toIntExact(user.getId()));
+        updateUserDTO.setUsername(user.getUsername());
+        updateUserDTO.setEmail(user.getEmail());
+        updateUserDTO.setPhone(user.getPhone());
+        updateUserDTO.setAddress(user.getAddress());
+
         userRepository.deleteById(id);
-        return ResponseEntity.ok("Usuario eliminado correctamente");
+        return updateUserDTO;
     }
 }
