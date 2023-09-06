@@ -22,7 +22,7 @@ public class MedicineEntity {
     @NotBlank
     private String name;
 
-    @NotBlank
+    @NotBlank @Column(length = 1000)
     private String description;
 
     @NotBlank

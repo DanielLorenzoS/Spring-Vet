@@ -40,6 +40,11 @@ public class MedicalController {
         return prescriptionService.getAll();
     }
 
+    @GetMapping("/prescription/all")
+    public List<PrescriptionEntity> getAllPrescriptionWithRelations() {
+        return prescriptionService.getAll();
+    }
+
     @PostMapping("/prescription")
     public PrescriptionEntity createPrescription(@Valid @RequestBody PrescriptionEntity prescription) {
         return prescriptionService.save(prescription);

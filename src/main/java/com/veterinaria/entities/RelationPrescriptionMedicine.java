@@ -33,6 +33,12 @@ public class RelationPrescriptionMedicine {
     @Column(name = "medication_interval")
     private String interval;
 
+    /*@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JsonBackReference(value = "prescription")
+    @JoinColumn(name = "prescription_id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    private PrescriptionEntity prescription;*/
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "relation_medicine",
             joinColumns = @JoinColumn(name = "relation_id"),
