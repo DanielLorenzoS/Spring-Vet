@@ -10,6 +10,10 @@ public class DatabaseConfig {
     @Autowired
     private Environment env;
 
+    public String getDatabaseUsername() {
+        return env.getProperty("SPRING_DATASOURCE_USERNAME");
+    }
+
     public String getDatabasePassword() {
         return env.getProperty("SPRING_DATASOURCE_PASSWORD");
     }
