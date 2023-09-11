@@ -11,7 +11,7 @@ public class DatabaseConfig {
     private Environment env;
 
     public String getDatabaseUsername() {
-        return env.getProperty("SPRING_DATASOURCE_USERNAME");
+        return env.getProperty("SPRING_DATASOURCE_URL");
     }
 
     public String getDatabasePassword() {
